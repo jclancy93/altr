@@ -36,7 +36,6 @@ export const NETWORK_ICON = {
   [ChainId.xDai]: xDai,
   [ChainId.Arbitrum]: Arbitrum,
   [ChainId.Avalanche]: Avalanche,
-  [ChainId.Celo]: Celo,
   [ChainId.Palm]: Palm,
 }
 

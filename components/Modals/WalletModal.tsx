@@ -68,8 +68,8 @@ export function WalletModal() {
               </h3>
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
-                  You need a Web3 wallet to interact with Wrapper. Please choose
-                  a wallet you have installed.
+                  You need a web3 wallet to interact with altr. Please choose a
+                  wallet you have installed.
                 </p>
               </div>
             </div>
