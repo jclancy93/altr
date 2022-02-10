@@ -10,7 +10,12 @@ import { ExternalLinkIcon } from "@heroicons/react/outline";
 import { getExplorerAddressLink } from "../../utils/network";
 import { CopyButton } from "../CopyButton";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import { useTransactions, useLookupAddress, useEthers } from "@usedapp/core";
+import {
+  useTransactions,
+  useLookupAddress,
+  useEthers,
+  useNotifications,
+} from "@usedapp/core";
 import Image from "next/image";
 
 function connectorToNameMapping(
@@ -29,7 +34,9 @@ export function WalletModal() {
   const { activate, account, connector, chainId, deactivate } = useEthers();
   const ENSName = useLookupAddress();
   const { transactions } = useTransactions();
+  const { notifications } = useNotifications();
   const { hideModal } = useModals();
+  console.log({ transactions, notifications });
 
   const walletSignout = () => {
     deactivate();
@@ -145,12 +152,14 @@ export function WalletModal() {
                 </div>
               </div>
             </div>
-            <div className="mt-4 text-gray-400 text-light">
-              Your transactions will appear here...
-            </div>
-            {transactions.map((e: any) => (
-              <h1 key={e.transaction.hash}>{e.transaction.hash}</h1>
-            ))}
+            <div className="mt-4 text-gray-400 text-light"></div>
+            <h1>Transactions</h1>
+            {transactions.map(
+              (e: any) => (
+                console.log(e, "tsx"),
+                (<h1 key={e.transaction.hash}>{e.transaction.hash}</h1>)
+              )
+            )}
           </div>
         </>
       )}
