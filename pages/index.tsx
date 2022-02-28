@@ -21,16 +21,17 @@ import { useERC721 } from "../hooks/useERC721";
 import { Button, ButtonConfirmed } from "../components/Button";
 import Mint from "../pages/mint";
 import { Notifications } from "../components/Notifications";
+import cornersquare from "../public/cornersquare.png";
 
 const Home = () => {
   return (
     <DAppProvider config={config}>
       <ModalProvider>
         <div className="fixed left-[26px] bottom-[26px] inline-flex">
-          <Image width="21px" height="21px" src="/../public/cornersquare.png" />
+          <Image width="21px" height="21px" src={cornersquare} alt="" />
         </div>
         <div className="fixed right-[26px] bottom-[26px] inline-flex">
-          <Image width="21px" height="21px" src="/../public/cornersquare.png" />
+          <Image width="21px" height="21px" src={cornersquare} alt="" />
         </div>
         <BaseModal />
         <Header />
