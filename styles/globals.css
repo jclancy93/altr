@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "UlagadiSans";
+  src: url("/fonts/HKGrotesk-Regular.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UlagadiSans";
+  src: url("/fonts/HKGrotesk-Bold.otf");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+body {
+  font-family: UlagadiSans;
+}
+
+model-viewer {
+  display: block;
+  width: 100%;
+  height: 400px;
+}

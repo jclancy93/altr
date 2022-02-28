@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import metamask from "../../public/metamask.svg";
 import walletConnect from "../../public/walletConnect.svg";
 import { shortenAddress } from "../../utils/shortenAddress";
-import { ExternalLinkIcon } from "@heroicons/react/outline";
+import { CheckCircleIcon, ExternalLinkIcon } from "@heroicons/react/outline";
 import { getExplorerAddressLink } from "../../utils/network";
 import { CopyButton } from "../CopyButton";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
@@ -15,6 +15,8 @@ import {
   useLookupAddress,
   useEthers,
   useNotifications,
+  StoredTransaction,
+  getExplorerTransactionLink,
 } from "@usedapp/core";
 import Image from "next/image";
 
@@ -48,9 +50,9 @@ export function WalletModal() {
 
   const tryActivation = async (connector: AbstractConnector | undefined) => {
     // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
-    if (connector instanceof WalletConnectConnector) {
-      connector.walletConnectProvider = undefined;
-    }
+    // if (connector instanceof WalletConnectConnector) {
+    //   connector.walletConnectProvider = undefined;
+    // }
     if (connector) {
       try {
         await activate(connector);
@@ -86,24 +88,35 @@ export function WalletModal() {
               variant="filled"
               color="gray"
               onClick={() => tryActivation(injected)}
-              className="flex text-left py-3 items-center"
+              className="flex text-left py-3 items-center justify-between"
             >
               Metamask
-              <Image src={metamask} className="ml-auto mx-2 h-10 w-10" alt="" />
+              <Image
+                src={metamask}
+                className="ml-auto mx-2 h-10 w-10"
+                height={24}
+                width={24}
+                alt=""
+              />
             </Button>
           </div>
           <div className="mt-5 sm:mt-6">
             <Button
               variant="filled"
               color="gray"
-              onClick={() => tryActivation(walletconnect)}
-              className="text-left py-3 flex items-center"
+              onClick={() => {
+                const test = tryActivation(walletconnect);
+                console.log(test);
+              }}
+              className="text-left py-3 flex items-center justify-between"
             >
               WalletConnect
               <Image
                 src={walletConnect}
                 className="ml-auto mx-2 h-10 w-10"
                 alt=""
+                height={24}
+                width={24}
               />
             </Button>
           </div>
@@ -145,21 +158,41 @@ export function WalletModal() {
                     rel="noreferrer"
                     target="_blank"
                   >
-                    <ExternalLinkIcon className="inline h-4 w-4 mr-1" /> View on
-                    Etherscan
+                    <ExternalLinkIcon className="inline h-4 w-4 mr-1" />
+                    View on Etherscan
                   </a>
                   <CopyButton copyText={account} />
                 </div>
               </div>
             </div>
-            <div className="mt-4 text-gray-400 text-light"></div>
-            <h1>Transactions</h1>
-            {transactions.map(
-              (e: any) => (
-                console.log(e, "tsx"),
-                (<h1 key={e.transaction.hash}>{e.transaction.hash}</h1>)
-              )
-            )}
+            <div className="mt-4 text-gray-400 text-light">
+              {transactions.length ? (
+                <>
+                  <h1>Transactions</h1>
+                  {transactions.map((e: StoredTransaction) => (
+                    <div
+                      key={e.transaction.hash}
+                      className="flex justify-between"
+                    >
+                      <span className="flex items-center">
+                        <CheckCircleIcon className="w-4 h-4 mr-2" />
+                        {e.transactionName}
+                      </span>
+                      <a
+                        className="cursor-pointer text-gray-500 text-xs inline-flex items-center mr-3 hover:text-gray-400"
+                        href={getExplorerTransactionLink(account, chainId)}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {shortenAddress(e.transaction.hash)}
+                      </a>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <h1>Transactions will appear here...</h1>
+              )}
+            </div>
           </div>
         </>
       )}

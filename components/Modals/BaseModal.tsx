@@ -1,9 +1,9 @@
-import { Dialog, Transition } from '@headlessui/react';
-import React, { Fragment } from 'react';
-import { isMobile } from 'react-device-detect';
-import { ModalType, useModalContext } from '../../contexts/Modal/context';
-import { NetworkModal } from './NetworkModal';
-import { WalletModal } from './WalletModal';
+import { Dialog, Transition } from "@headlessui/react";
+import React, { Fragment } from "react";
+import { isMobile } from "react-device-detect";
+import { ModalType, useModalContext } from "../../contexts/Modal/context";
+import { NetworkModal } from "./NetworkModal";
+import { WalletModal } from "./WalletModal";
 
 interface ModalProps {
   minHeight?: number;
@@ -38,11 +38,11 @@ export default function BaseModal({
           <div
             className="transition-all transform"
             style={{
-              width: isMobile ? `100%` : '80vw',
+              width: isMobile ? `100%` : "80vw",
               maxWidth: `${maxWidth}px`,
             }}
           >
-            <div className="w-full p-px rounded bg-gray-900">
+            <div className="w-full p-px rounded bg-brand">
               <div className="flex flex-col w-full h-full p-6 overflow-y-scroll rounded">
                 <div
                   style={{

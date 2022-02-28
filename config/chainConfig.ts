@@ -10,10 +10,13 @@ export const config: Config = {
       [Rinkeby.chainId]:
         "https://rinkeby.infura.io/v3/ff4b9e3e27404d18ae6296dcc353fd60",
     },
-    // multicallAddresses: {
-    //     ...MULTICALL_ADDRESSES
-    // }
-    // networks: [Mainnet, Rinkeby]
+    notifications: {
+      checkInterval: 1000,
+      expirationPeriod: 10000
+    },
+    localStorage: {
+      transactionPath: 'transactions'
+    }
   };
   
 export const NETWORK_CONNECTIONS = {
