@@ -51,6 +51,7 @@ export function useContract(
       return getContract(
         address,
         ABI,
+        // @ts-ignore
         library,
         withSignerIfPossible && account ? account : undefined
       );

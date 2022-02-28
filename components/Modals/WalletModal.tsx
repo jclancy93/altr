@@ -7,7 +7,6 @@ import metamask from "../../public/metamask.svg";
 import walletConnect from "../../public/walletConnect.svg";
 import { shortenAddress } from "../../utils/shortenAddress";
 import { CheckCircleIcon, ExternalLinkIcon } from "@heroicons/react/outline";
-import { getExplorerAddressLink } from "../../utils/network";
 import { CopyButton } from "../CopyButton";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import {
@@ -17,6 +16,8 @@ import {
   useNotifications,
   StoredTransaction,
   getExplorerTransactionLink,
+  useNetwork,
+  getExplorerAddressLink,
 } from "@usedapp/core";
 import Image from "next/image";
 
@@ -33,7 +34,10 @@ function connectorToNameMapping(
 }
 
 export function WalletModal() {
-  const { activate, account, connector, chainId, deactivate } = useEthers();
+  const { activate, account, connector, deactivate } = useEthers();
+  const {
+    network: { provider, chainId, accounts, errors },
+  } = useNetwork();
   const ENSName = useLookupAddress();
   const { transactions } = useTransactions();
   const { notifications } = useNotifications();
@@ -42,10 +46,6 @@ export function WalletModal() {
 
   const walletSignout = () => {
     deactivate();
-    // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
-    if (connector instanceof WalletConnectConnector) {
-      connector.walletConnectProvider = undefined;
-    }
   };
 
   const tryActivation = async (connector: AbstractConnector | undefined) => {
@@ -134,7 +134,7 @@ export function WalletModal() {
               <div className="w-full flex justify-between items-center">
                 <p className="text-gray-500 text-xs font-normal">
                   Connected with{" "}
-                  {connectorToNameMapping(connector?.constructor.name) ??
+                  {connectorToNameMapping(provider?.constructor.name) ??
                     "Unknown"}
                 </p>
                 <Button
@@ -154,6 +154,7 @@ export function WalletModal() {
                 <div className="mt-2">
                   <a
                     className="cursor-pointer text-gray-500 text-xs inline-flex items-center mr-3 hover:text-gray-400"
+                    // @ts-ignore
                     href={getExplorerAddressLink(account, chainId)}
                     rel="noreferrer"
                     target="_blank"
@@ -180,6 +181,7 @@ export function WalletModal() {
                       </span>
                       <a
                         className="cursor-pointer text-gray-500 text-xs inline-flex items-center mr-3 hover:text-gray-400"
+                        // @ts-ignore
                         href={getExplorerTransactionLink(account, chainId)}
                         rel="noreferrer"
                         target="_blank"

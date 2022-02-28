@@ -53,9 +53,9 @@ export default function BaseModal({
                   {store.modalType === ModalType.WALLET_MODAL && (
                     <WalletModal />
                   )}
-                  {store.modalType === ModalType.NETWORK_MODAL && (
+                  {/* {store.modalType === ModalType.NETWORK_MODAL && (
                     <NetworkModal />
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

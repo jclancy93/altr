@@ -1,7 +1,6 @@
 import { NetworkModal } from "../components/Modals/NetworkModal";
 import { ChainId } from "@usedapp/core";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
-import { NETWORK_ICON } from "../config/networks";
 import { useModals } from "../hooks/useModals";
 import { CHAIN_NAMES } from "../constants/ChainId";
 
@@ -33,7 +32,7 @@ function Web3Network(): JSX.Element | null {
               height="20px"
             />
             {/* // @ts-ignore */}
-            <span>{CHAIN_NAMES[chainId]}</span>
+            {/* <span>{CHAIN_NAMES[chainId]}</span> */}
           </>
         ) : (
           <span>Wrong Network</span>

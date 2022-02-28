@@ -4,6 +4,21 @@ import { useRef, useEffect, Suspense } from "react";
 import { useLoader } from "@react-three/fiber";
 import "@google/model-viewer";
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      ["model-viewer"]: {
+        src: string;
+        alt: string;
+        ["auto-rotate"]: string;
+        autoplay: string;
+        ar: string;
+        exposure: string;
+      };
+    }
+  }
+}
+
 function Model() {
   return (
     <div>
