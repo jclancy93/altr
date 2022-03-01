@@ -25,7 +25,7 @@ function Model() {
       <Suspense fallback="Loading...">
         <model-viewer
           data-js-focus-visible="true"
-          src="facecovering.glb"
+          src="NETC0.glb"
           alt="3D model of ‘VISCERA’ MAGIC PLEATS DRESS"
           auto-rotate="true"
           autoplay="true"
