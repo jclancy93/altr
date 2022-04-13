@@ -10,6 +10,7 @@ import { isMobile } from "react-device-detect";
 import { useEthers, useLookupAddress } from "@usedapp/core";
 import Image from "next/image";
 import logo from "../public/logo.png";
+import lock from "../public/icons/lock.svg";
 
 export function ConnectWalletButton() {
   const { account } = useEthers();
@@ -19,11 +20,14 @@ export function ConnectWalletButton() {
   return (
     <button
       type="button"
-      className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none mx-2"
+      className="relative inline-flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover focus:outline-none mx-2 w-[206px]"
       onClick={() => showWalletModal()}
     >
       {!account ? (
-        <span>Connect Wallet</span>
+        <div className="flex w-full">
+          <Image src={lock} width="24" height="24" className="inline-block" />
+          <span className="inline-block pl-3 mt-0.5">Connect Wallet</span>
+        </div>
       ) : (
         <span>{ENSName ?? shortenAddress(account)}</span>
       )}
@@ -39,11 +43,11 @@ export function Header() {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center text-white text-2xl">
-                  <Image src={logo} alt="logo" width={128} height={61} />
+                  <Image src={logo} alt="logo" width={172} height={80} />
                 </div>
               </div>
               <div className="flex items-center">
