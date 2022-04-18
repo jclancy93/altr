@@ -1,6 +1,5 @@
 import { ChainId, Config, Mainnet, Rinkeby } from "@usedapp/core";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import { MULTICALL_ADDRESSES } from "../constants/addresses";
 
 export const config: Config = {
     readOnlyChainId: Rinkeby.chainId,

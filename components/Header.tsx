@@ -11,6 +11,7 @@ import { useEthers, useLookupAddress } from "@usedapp/core";
 import Image from "next/image";
 import logo from "../public/logo.png";
 import lock from "../public/icons/lock.svg";
+import user from "../public/icons/user.svg";
 
 export function ConnectWalletButton() {
   const { account } = useEthers();
@@ -25,11 +26,28 @@ export function ConnectWalletButton() {
     >
       {!account ? (
         <div className="flex w-full">
-          <Image src={lock} width="24" height="24" className="inline-block" />
-          <span className="inline-block pl-3 mt-0.5">Connect Wallet</span>
+          <Image
+            src={lock}
+            width="24"
+            height="24"
+            className="inline-block"
+            alt=""
+          />
+          <span className="inline-flex w-full justify-center mt-0.5">
+            Connect Wallet
+          </span>
         </div>
       ) : (
-        <span>{ENSName ?? shortenAddress(account)}</span>
+        <div className="flex w-full">
+          <Image
+            src={user}
+            width="24"
+            height="24"
+            className="inline-block"
+            alt=""
+          />
+          <span className="inline-flex w-full justify-center">Profile</span>
+        </div>
       )}
     </button>
   );

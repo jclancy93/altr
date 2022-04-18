@@ -1,9 +1,12 @@
 import { Contract } from "@ethersproject/contracts";
 import { useContractFunction, useEthers } from "@usedapp/core";
+import Image from "next/image";
 import { useERC721 } from "../hooks/useERC721";
 import { useModals } from "../hooks/useModals";
 import { ButtonConfirmed } from "./Button";
 import ERC721ABI from "../constants/abi/ERC721.json";
+import lock from "../public/icons/lock.svg";
+import wallet from "../public/icons/wallet.svg";
 
 export const MintButton = () => {
   const { account } = useEthers();
@@ -23,19 +26,28 @@ export const MintButton = () => {
     }
   );
 
-  console.log({ state });
-
   return (
     <>
       <ButtonConfirmed
-        className="inline-flex items-center justify-center py-2 mt-4 font-semibold leading-6 text-sm shadow rounded-md text-white bg-blue-500 hover:bg-blue-600 transition ease-in-out duration-150"
+        className="inline-flex items-center justify-center py-2 mt-4 text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover leading-6 text-white transition ease-in-out duration-150"
         variant="filled"
         size="lg"
         // disabled={account ? true : !isSaleActive ? true : false}
         onClick={() => (account ? mintToken() : showWalletModal())}
       >
         {!account ? (
-          "Connect Wallet to Buy"
+          <div className="flex w-full">
+            <Image
+              src={lock}
+              width="24"
+              height="24"
+              className="inline-block"
+              alt=""
+            />
+            <span className="inline-flex w-full justify-center mt-0.5">
+              Connect Wallet to Buy
+            </span>
+          </div>
         ) : state.status === "Mining" || state.status === "PendingSignature" ? (
           <>
             <svg
@@ -61,7 +73,18 @@ export const MintButton = () => {
             Processing...
           </>
         ) : (
-          "Buy"
+          <div className="flex w-full">
+            <Image
+              src={wallet}
+              width="24"
+              height="24"
+              className="inline-block"
+              alt=""
+            />
+            <span className="inline-flex w-full justify-center mt-0.5">
+              Buy
+            </span>
+          </div>
         )}
       </ButtonConfirmed>
       {state.errorMessage && (
