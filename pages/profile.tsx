@@ -24,6 +24,7 @@ import { Contract } from "@ethersproject/contracts";
 import { ethers } from "ethers";
 import maskSquare from "../public/mask-square.png";
 import { IconNFT } from "degen";
+import Link from "next/link";
 
 const ERC721_ADDRESS = "0x84b0d249405ed0e1a215ff4b7f5bf79a8ab165ea"; //ropsten
 
@@ -46,7 +47,7 @@ const Profile = () => {
 
   return (
     <PageLayout>
-      <section className="w-full lg:w-1/5 border-r border-gray-500 h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[112px] mt-[130px] lg:mt-0 lg:border-b-0">
+      <section className="w-full lg:w-1/5 border-r border-gray-500 h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[112px] mt-[130px] lg:mt-0 lg:border-b-0 max-h-[calc(100vh-112px)]">
         <div>
           <Image src={user} alt="profile photo" />
           <p className="text-center font-semibold mt-6 text-gray-100">
@@ -103,12 +104,14 @@ const Profile = () => {
         ) : (
           <div className="w-full min-h-[calc(100vh-112px)] flex flex-col items-center justify-center">
             <p>No items owned</p>
-            <button className="block mt-6 flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover max-w-full w-[206px] mx-2">
-              <IconNFT />
-              <span className="inline-flex w-full justify-center mt-0.5">
-                View Items
-              </span>
-            </button>
+            <Link href="/">
+              <button className="block mt-6 flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover max-w-full w-[206px] mx-2">
+                <IconNFT />
+                <span className="inline-flex w-full justify-center mt-0.5">
+                  View Items
+                </span>
+              </button>
+            </Link>
           </div>
         )}
       </section>

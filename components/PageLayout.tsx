@@ -22,13 +22,11 @@ export const PageLayout = ({
       <div className="fixed right-[26px] bottom-[26px] inline-flex">
         <Image width="21px" height="21px" src={cornersquare} alt="" />
       </div> */}
-      <DAppProvider config={config}>
-        <BaseModal />
-        <Header />
-        <div className="bg-brand min-w-full text-brand-text h-[calc(100vh-112px)]">
-          <div className="mx-auto min-h-full">{children}</div>
-        </div>
-      </DAppProvider>
+      <BaseModal />
+      <Header />
+      <div className="bg-brand min-w-full text-brand-text h-[calc(100vh-112px)]">
+        <div className="mx-auto min-h-full">{children}</div>
+      </div>
       {/* <Notifications /> */}
     </>
   );
