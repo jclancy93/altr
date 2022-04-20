@@ -1,7 +1,4 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import {
   DAppProvider,
   useEtherBalance,
@@ -9,40 +6,55 @@ import {
   TransactionState,
   useNotifications,
 } from "@usedapp/core";
-import { Fragment } from "react";
-import { ThemeProvider } from "degen";
-import "degen/styles";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import styles from "../styles/Home.module.css";
-import { Header } from "../components/Header";
-import { ModalProvider } from "../contexts/Modal";
-import BaseModal from "../components/Modals/BaseModal";
-import { config } from "../config/chainConfig";
-import { Carousel } from "react-responsive-carousel";
+import { Tag } from "degen";
 import { useERC721 } from "../hooks/useERC721";
-import { Button, ButtonConfirmed } from "../components/Button";
-import Mint from "../pages/mint";
-import { Notifications } from "../components/Notifications";
-import cornersquare from "../public/cornersquare.png";
+import { PageLayout } from "../components/PageLayout";
+import { useModals } from "../hooks/useModals";
+import { MintButton } from "../components/MintButton";
+import { ProductCarousel } from "../components/ProductCarousel";
 
 const Home = () => {
+  const { maxSupply, totalSupply, isSaleActive } = useERC721();
+  const { account } = useEthers();
+  const { showWalletModal } = useModals();
+
   return (
-    <DAppProvider config={config}>
-      <ThemeProvider defaultMode="dark" defaultAccent="green">
-        <ModalProvider>
-          <div className="fixed left-[26px] bottom-[26px] inline-flex">
-            <Image width="21px" height="21px" src={cornersquare} alt="" />
+    <PageLayout>
+      <div className="flex flex-col-reverse lg:flex-row justify-between mt-[112px] pt-20 px-8 sm:px-12 lg:px-16">
+        <section className="w-full lg:w-2/5 lg:pr-10">
+          <div className="border-0 lg:border border-gray-100 px-8 py-12 rounded-[44px] lg:max-w-[440px]">
+            <span className="block text-4xl text-white">netc0 mask</span>
+            <div className="flex mt-4">
+              <span className="font-bold text-gray-100 mr-3">0.05Ξ</span>
+              {totalSupply > 0 && (
+                <Tag
+                  label={totalSupply === maxSupply ? "Sold out" : "Remaining"}
+                >
+                  {totalSupply} / {maxSupply}
+                </Tag>
+              )}
+            </div>
+            <span className="mt-4 block mb-4 text-gray-400">
+              Our very first asset.
+              <br />
+              <br />
+              A soft augmented reality helmet with integrated biological defence
+              and sound control.
+              <br />
+              <br />
+              Click &#39;Buy&#39; to obtain a digital version of your mask.
+              <br />
+              <br />
+              Your key to the altr_ ecosystem
+            </span>
+            <MintButton />
           </div>
-          <div className="fixed right-[26px] bottom-[26px] inline-flex">
-            <Image width="21px" height="21px" src={cornersquare} alt="" />
-          </div>
-          <BaseModal />
-          <Header />
-          <Mint />
-          <Notifications />
-        </ModalProvider>
-      </ThemeProvider>
-    </DAppProvider>
+        </section>
+        <section className="w-full lg:w-3/5 static lg:sticky top-28">
+          <ProductCarousel />
+        </section>
+      </div>
+    </PageLayout>
   );
 };
 

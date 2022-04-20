@@ -15,7 +15,8 @@ export const config: Config = {
     },
     localStorage: {
       transactionPath: 'transactions'
-    }
+    },
+    autoConnect: true,
   };
   
 export const NETWORK_CONNECTIONS = {

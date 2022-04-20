@@ -18,6 +18,10 @@
   font-display: swap;
 }
 
+html {
+  background: #141414;
+}
+
 body {
   font-family: UlagadiSans;
 }

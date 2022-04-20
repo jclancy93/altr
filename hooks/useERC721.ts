@@ -1,25 +1,22 @@
 import { ethers } from "ethers"
 import { useCallback } from "react"
 import { ConsoleView } from "react-device-detect"
-import { ChainId, useSendTransaction, useContractCalls, useEtherBalance, useEthers, useContractFunction } from "@usedapp/core"
+import { ChainId, useSendTransaction, useContractCalls, useEtherBalance, useEthers, useContractFunction, useCalls } from "@usedapp/core"
 import { NFT_ADDRESSES } from "../constants/addresses"
 import ERC721ABI from "../constants/abi/ERC721.json"
 import { useContract } from "./useContract"
 
-// const ERC721_ADDRESS = '0xAB6f5Fa0e0586b8557b5692669Df16A70b1aa980' // rinkeby
 const ERC721_ADDRESS = '0x84B0D249405Ed0e1a215FF4B7F5BF79a8aB165Ea' //ropsten
 
 export const useERC721 = () => {
     const { chainId, account, library } = useEthers()
-    const ERC721Contract = useContract(ERC721_ADDRESS, ERC721ABI)
+    const ERC721Contract = new ethers.Contract(ERC721_ADDRESS, ERC721ABI)
     const partialCall = {
         address: ERC721_ADDRESS,
-        abi: new ethers.utils.Interface(ERC721ABI),
+        contract: ERC721Contract,
     }
 
-    const balance = useEtherBalance(account)
-
-    const [maxSupplyRaw, totalSupplyRaw, isSaleActiveRaw] = useContractCalls([
+    const [maxSupplyRaw, totalSupplyRaw, isSaleActiveRaw, balanceOfRaw] = useCalls([
         {
             ...partialCall,
             method:'MAX_SUPPLY',
@@ -35,21 +32,22 @@ export const useERC721 = () => {
             method:'saleIsActive',
             args: [],
         },
+        {
+            ...partialCall,
+            method:'balanceOf',
+            args: [account],
+        },
     ])
 
-    const maxSupply = maxSupplyRaw?.[0] ?? 0
-    const totalSupply = totalSupplyRaw?.[0] ?? 0
-    const isSaleActive = isSaleActiveRaw?.[0] ?? 0
-
-    // @ts-ignore
-    const { state, send } = useContractFunction(ERC721Contract, 'mint', { transactionName: 'Buy Mask' })
+    const maxSupply = maxSupplyRaw?.value?.[0] ?? 0
+    const totalSupply = totalSupplyRaw?.value?.[0] ?? 0
+    const isSaleActive = isSaleActiveRaw?.value?.[0] ?? 0
+    const balanceOf = balanceOfRaw?.value?.[0] ?? 0
 
     return {
-        balance,
-        isSaleActive,
+        isSaleActive: false,
         maxSupply: maxSupply.toString(),
         totalSupply: totalSupply.toString(),
-        mintTransactionState: state,
-        mintToken: send,
+        balanceOf: +balanceOf.toString(),
     }
 }

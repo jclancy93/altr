@@ -7,15 +7,13 @@ import { ButtonConfirmed } from "./Button";
 import ERC721ABI from "../constants/abi/ERC721.json";
 import lock from "../public/icons/lock.svg";
 import wallet from "../public/icons/wallet.svg";
+import { useEffect, useState } from "react";
 
 export const MintButton = () => {
   const { account } = useEthers();
   const { showWalletModal } = useModals();
   const { isSaleActive } = useERC721();
-
   const ERC721_ADDRESS = "0x84B0D249405Ed0e1a215FF4B7F5BF79a8aB165Ea"; //ropsten
-
-  // const ERC721Contract = useContract(ERC721_ADDRESS, ERC721ABI);
   const ERC721Contract = new Contract(ERC721_ADDRESS, ERC721ABI);
   const { state, send: mintToken } = useContractFunction(
     // @ts-ignore
@@ -32,8 +30,9 @@ export const MintButton = () => {
         className="inline-flex items-center justify-center py-2 mt-4 text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover leading-6 text-white transition ease-in-out duration-150"
         variant="filled"
         size="lg"
-        // disabled={account ? true : !isSaleActive ? true : false}
-        onClick={() => (account ? mintToken() : showWalletModal())}
+        onClick={() =>
+          account ? mintToken({ gasLimit: 300000 }) : showWalletModal()
+        }
       >
         {!account ? (
           <div className="flex w-full">

@@ -1,6 +1,13 @@
-import { ReactChild } from "react";
+import { ReactChild, useEffect } from "react";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import Image from "next/image";
+import cornersquare from "../public/cornersquare.png";
+import BaseModal from "../components/Modals/BaseModal";
+import { Notifications } from "../components/Notifications";
+import { injected } from "../config/connectors";
+import { DAppProvider, useEthers } from "@usedapp/core";
+import { config } from "../config/chainConfig";
 
 export const PageLayout = ({
   children,
@@ -9,16 +16,20 @@ export const PageLayout = ({
 }) => {
   return (
     <>
-      <Header />
-      <section
-        className="bg-brand"
-        style={{ minHeight: "calc(100vh - 184px)" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
-          {children}
+      {/* <div className="fixed left-[26px] bottom-[26px] inline-flex">
+        <Image width="21px" height="21px" src={cornersquare} alt="" />
+      </div>
+      <div className="fixed right-[26px] bottom-[26px] inline-flex">
+        <Image width="21px" height="21px" src={cornersquare} alt="" />
+      </div> */}
+      <DAppProvider config={config}>
+        <BaseModal />
+        <Header />
+        <div className="bg-brand min-w-full text-brand-text h-[calc(100vh-112px)]">
+          <div className="mx-auto min-h-full">{children}</div>
         </div>
-      </section>
-      {/* <Footer /> */}
+      </DAppProvider>
+      {/* <Notifications /> */}
     </>
   );
 };
