@@ -74,7 +74,10 @@ const Profile = () => {
               Logout
             </span>
           </button>
-          <button className="block mt-6 flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700 max-w-full w-[206px] mx-2">
+          <button
+            className="block mt-6 flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700 max-w-full w-[206px] mx-2"
+            onClick={() => window.open("https://discord.gg/Gwvp6KNw", "_blank")}
+          >
             <Image
               src={discord}
               width="24"

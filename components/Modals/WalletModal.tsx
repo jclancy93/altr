@@ -87,13 +87,12 @@ export function WalletModal() {
           color="gray"
           onClick={async () => {
             const provider = new WalletConnectProvider({
-              infuraId: "d8df2cb7844e4a54ab0a782f608749dd",
+              infuraId: "ff4b9e3e27404d18ae6296dcc353fd60",
             });
             await provider.enable();
             // @ts-expect-error
             activate(provider);
             hideModal();
-            // tryActivation(walletconnect);
           }}
           className="text-left py-3 flex items-center justify-between"
         >
