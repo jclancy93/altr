@@ -94,7 +94,7 @@ const Profile = () => {
       <section className="flex flex-col lg:flex-row justify-between flex-wrap pl-0 lg:pl-[20%] min-h-[calc(100vh-112px)] mt-[112px]">
         {balanceOf ? (
           <>
-            {Array.from({ length: 5 }).map((t, i) => {
+            {Array.from({ length: balanceOf }).map((t, i) => {
               let borderClasses = "";
               if (i % 2 !== 0) borderClasses += "border-r";
               if (balanceOf % 2 === 0 && i >= balanceOf - 3)

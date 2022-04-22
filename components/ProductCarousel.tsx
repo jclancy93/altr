@@ -14,7 +14,7 @@ const ModelComponent = dynamic(() => import("./Model"), { ssr: false });
 export const ProductCarousel = () => {
   return (
     <>
-      <Carousel showThumbs={false}>
+      <Carousel showThumbs={false} statusFormatter={() => ""}>
         <div>
           <ModelComponent />
         </div>
