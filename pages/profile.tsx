@@ -30,7 +30,7 @@ const ERC721_ADDRESS = "0x84b0d249405ed0e1a215ff4b7f5bf79a8ab165ea"; //ropsten
 
 const ProfileItem = ({ className }: { className: string }) => (
   <div
-    className={`w-full lg:w-1/2 flex flex-col justify-center items-center border-r border-b border-brand-border min-h-[calc(100vh-112px)] ${className}`}
+    className={`w-full lg:w-1/2 flex flex-col justify-center items-center border-r border-b border-brand-border min-h-[calc(100vh-96px)] ${className}`}
   >
     <Image src={maskSquare} alt="profile photo" />
     <p className="text-2xl text-white">nect0 mask</p>
@@ -47,7 +47,7 @@ const Profile = () => {
 
   return (
     <PageLayout>
-      <section className="w-full lg:w-1/5 border-r border-brand-border h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[96px] mt-[130px] lg:mt-0 lg:border-b-0 max-h-[calc(100vh-112px)]">
+      <section className="w-full lg:w-1/5 border-r border-brand-border h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[96px] mt-[130px] lg:mt-0 lg:border-b-0 max-h-[calc(100vh-96px)]">
         <div>
           <svg viewBox="0 0 300 400" className="mx-12" width={200}>
             <image href={user.src} width="250" x="25" />
@@ -104,7 +104,7 @@ const Profile = () => {
           </button>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row justify-between flex-wrap pl-0 lg:pl-[20%] min-h-[calc(100vh-112px)] mt-[96px]">
+      <section className="flex flex-col lg:flex-row justify-between flex-wrap pl-0 lg:pl-[20%] min-h-[calc(100vh-96px)] mt-[96px]">
         {balanceOf ? (
           <>
             {Array.from({ length: balanceOf }).map((t, i) => {
@@ -118,7 +118,7 @@ const Profile = () => {
             })}
           </>
         ) : (
-          <div className="w-full min-h-[calc(100vh-112px)] flex flex-col items-center justify-center">
+          <div className="w-full min-h-[calc(100vh-96px)] flex flex-col items-center justify-center">
             <p>No items owned</p>
             <Link href="/">
               <button className="block mt-6 flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover max-w-full w-[206px] mx-2">

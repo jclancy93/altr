@@ -29,7 +29,7 @@ export const PageLayout = ({
       </div> */}
       <BaseModal />
       <Header />
-      <div className="bg-brand min-w-full text-brand-text h-[calc(100vh-112px)]">
+      <div className="bg-brand min-w-full text-brand-text h-[calc(100vh-96px)]">
         <div className="mx-auto min-h-full">{children}</div>
       </div>
       {/* <Notifications /> */}
