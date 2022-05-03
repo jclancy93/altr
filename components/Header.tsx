@@ -23,7 +23,7 @@ export function ConnectWalletButton() {
   return (
     <button
       type="button"
-      className="relative inline-flex items-center px-3 py-3 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover focus:outline-none mx-2 w-[206px]"
+      className="relative inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover focus:outline-none mx-2 w-[206px]"
       onClick={() => (!account ? showWalletModal() : router.push("/profile"))}
     >
       {!account ? (
@@ -61,23 +61,29 @@ export function Header() {
   return (
     <Disclosure
       as="nav"
-      className="bg-brand min-w-full border-b border-gray-500 fixed top-0 z-50"
+      className="bg-brand min-w-full border-b border-brand-border fixed top-0 z-50"
     >
       {({ open }) => (
         <>
-          <div className="mx-auto px-4 py-6 sm:px-6 lg:px-8 text-gray-300">
+          <div className="mx-auto px-4 py-4 sm:px-6 lg:px-8 text-gray-300">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <Link href="/">
-                    <Image src={logo} alt="logo" width={172} height={80} />
+                    <Image
+                      src={logo}
+                      alt="logo"
+                      width={140}
+                      height={70}
+                      className="object-fill"
+                    />
                   </Link>
                 </div>
                 <Link href="">
-                  <span className="flex items-center mx-4">Vision</span>
+                  <span className="flex items-center mx-4">vision</span>
                 </Link>
                 <Link href="">
-                  <span className="flex items-center mx-4">Contact</span>
+                  <span className="flex items-center mx-4">contact</span>
                 </Link>
               </div>
               <div className="flex items-center">

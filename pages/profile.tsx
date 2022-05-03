@@ -30,7 +30,7 @@ const ERC721_ADDRESS = "0x84b0d249405ed0e1a215ff4b7f5bf79a8ab165ea"; //ropsten
 
 const ProfileItem = ({ className }: { className: string }) => (
   <div
-    className={`w-full lg:w-1/2 flex flex-col justify-center items-center border-r border-gray-500 border-b border-gray-500 min-h-[calc(100vh-112px)] ${className}`}
+    className={`w-full lg:w-1/2 flex flex-col justify-center items-center border-r border-b border-brand-border min-h-[calc(100vh-112px)] ${className}`}
   >
     <Image src={maskSquare} alt="profile photo" />
     <p className="text-2xl text-white">nect0 mask</p>
@@ -47,12 +47,27 @@ const Profile = () => {
 
   return (
     <PageLayout>
-      <section className="w-full lg:w-1/5 border-r border-gray-500 h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[112px] mt-[130px] lg:mt-0 lg:border-b-0 max-h-[calc(100vh-112px)]">
+      <section className="w-full lg:w-1/5 border-r border-brand-border h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[96px] mt-[130px] lg:mt-0 lg:border-b-0 max-h-[calc(100vh-112px)]">
         <div>
-          <Image src={user} alt="profile photo" />
-          <p className="text-center font-semibold mt-6 text-gray-100">
-            {account && (ENSName || shortenAddress(account))}
-          </p>
+          {/* <Image src={user} alt="profile photo" /> */}
+
+          <svg viewBox="0 0 300 400" className="mx-12">
+            <image href={user.src} width="250" x="25" />
+            <path
+              id="curve"
+              transform="translate(0, -75)"
+              fill="transparent"
+              d="M0,280 C53,395 266,388 296,274"
+            />
+            <text width="500" fill="white" letterSpacing="1" fontSize={13}>
+              <textPath xlinkHref="#curve">{account}</textPath>
+            </text>
+          </svg>
+          {account && ENSName && (
+            <p className="text-center text-xl font-semibold mt-6 text-gray-100">
+              {ENSName}
+            </p>
+          )}
         </div>
         <div>
           <button
@@ -91,7 +106,7 @@ const Profile = () => {
           </button>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row justify-between flex-wrap pl-0 lg:pl-[20%] min-h-[calc(100vh-112px)] mt-[112px]">
+      <section className="flex flex-col lg:flex-row justify-between flex-wrap pl-0 lg:pl-[20%] min-h-[calc(100vh-112px)] mt-[96px]">
         {balanceOf ? (
           <>
             {Array.from({ length: balanceOf }).map((t, i) => {

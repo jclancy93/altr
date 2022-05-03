@@ -2,7 +2,8 @@ import { createContext, useContext } from 'react'
 
 export enum ModalType {
   WALLET_MODAL = 'WALLET_MODAL',
-  NETWORK_MODAL = 'NETWORK_MODAL'
+  NETWORK_MODAL = 'NETWORK_MODAL',
+  WRONG_NETWORK_MODAL = 'WRONG_NETWORK_MODAL'
 }
 
 type ContextType = {

@@ -1,5 +1,7 @@
 import { ChainId } from "@usedapp/core"
 
+export const DEFAULT_CHAIN = ChainId.Ropsten;
+
 export const CHAIN_NAMES = {
   [ChainId.Mainnet]: 'Ethereum',
   [ChainId.Ropsten]: 'Ropsten',

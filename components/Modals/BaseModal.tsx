@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import { ModalType, useModalContext } from "../../contexts/Modal/context";
 import { NetworkModal } from "./NetworkModal";
 import { WalletModal } from "./WalletModal";
+import { WrongNetworkModal } from "./WrongNetworkModal";
 
 interface ModalProps {
   minHeight?: number;
@@ -53,9 +54,9 @@ export default function BaseModal({
                   {store.modalType === ModalType.WALLET_MODAL && (
                     <WalletModal />
                   )}
-                  {/* {store.modalType === ModalType.NETWORK_MODAL && (
-                    <NetworkModal />
-                  )} */}
+                  {store.modalType === ModalType.WRONG_NETWORK_MODAL && (
+                    <WrongNetworkModal />
+                  )}
                 </div>
               </div>
             </div>

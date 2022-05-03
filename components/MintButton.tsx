@@ -26,10 +26,8 @@ export const MintButton = () => {
 
   return (
     <>
-      <ButtonConfirmed
-        className="inline-flex items-center justify-center py-2 mt-4 text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover leading-6 text-white transition ease-in-out duration-150"
-        variant="filled"
-        size="lg"
+      <button
+        className="w-full inline-flex items-center justify-center py-4 px-4 mt-4 text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover leading-6 text-white transition ease-in-out duration-150"
         onClick={() =>
           account ? mintToken({ gasLimit: 300000 }) : showWalletModal()
         }
@@ -85,7 +83,7 @@ export const MintButton = () => {
             </span>
           </div>
         )}
-      </ButtonConfirmed>
+      </button>
       {state.errorMessage && (
         <span className="text-red-400 text-center block">
           {state.errorMessage}

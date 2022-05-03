@@ -25,7 +25,7 @@ function Model() {
       <Suspense fallback="Loading...">
         <model-viewer
           data-js-focus-visible="true"
-          src="NETC0.glb"
+          src="NECT0.glb"
           alt="3D model of `NECT0` digital mask"
           auto-rotate="true"
           autoplay="true"
@@ -34,6 +34,7 @@ function Model() {
           field-of-view="44deg"
           ios-src="nect0.usdz"
           exposure="1"
+          poster-color="black"
           environment-image="neutral"
           ar-status="not-presenting"
         ></model-viewer>

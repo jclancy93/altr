@@ -18,12 +18,33 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "UlagadiSans";
+  src: url("/fonts/HKGrotesk-BoldItalic.otf");
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+}
+
 html {
   background: #141414;
 }
 
+.text-outline-white {
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white;
+  /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000; */
+}
+
 body {
   font-family: UlagadiSans;
+}
+
+.text-tiny {
+  font-size: 0.5rem;
+  line-height: 0.75rem;
 }
 
 model-viewer {

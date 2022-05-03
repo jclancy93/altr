@@ -1,13 +1,11 @@
-import { ChainId, Config, Mainnet, Rinkeby } from "@usedapp/core";
+import { ChainId, Config, Mainnet, Rinkeby, Ropsten } from "@usedapp/core";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 
 export const config: Config = {
-    readOnlyChainId: Rinkeby.chainId,
+    readOnlyChainId: 3,
     readOnlyUrls: {
-      [Mainnet.chainId]:
-        "https://mainnet.infura.io/v3/ff4b9e3e27404d18ae6296dcc353fd60",
-      [Rinkeby.chainId]:
-        "https://rinkeby.infura.io/v3/ff4b9e3e27404d18ae6296dcc353fd60",
+      [Ropsten.chainId]:
+        "https://ropsten.infura.io/v3/ff4b9e3e27404d18ae6296dcc353fd60",
     },
     notifications: {
       checkInterval: 1000,

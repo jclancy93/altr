@@ -6,14 +6,19 @@ import cornersquare from "../public/cornersquare.png";
 import BaseModal from "../components/Modals/BaseModal";
 import { Notifications } from "../components/Notifications";
 import { injected } from "../config/connectors";
-import { DAppProvider, useEthers } from "@usedapp/core";
+import { ChainId, DAppProvider, useEthers } from "@usedapp/core";
 import { config } from "../config/chainConfig";
+import { useSpecificNetwork } from "../hooks/useSpecificNetwork";
+import { DEFAULT_CHAIN } from "../constants/ChainId";
 
 export const PageLayout = ({
   children,
 }: {
   children: ReactChild | ReactChild[];
 }) => {
+  // shows wrong network modal if user not connected to ropsten
+  useSpecificNetwork(DEFAULT_CHAIN);
+
   return (
     <>
       {/* <div className="fixed left-[26px] bottom-[26px] inline-flex">
