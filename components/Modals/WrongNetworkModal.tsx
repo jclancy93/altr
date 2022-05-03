@@ -1,3 +1,4 @@
+// @ts-ignore
 import { useModals } from "../../hooks/useModals";
 import { Button } from "../Button";
 import {
@@ -34,18 +35,20 @@ export function WrongNetworkModal() {
         </h3>
         <div className="mt-2">
           <p className="text-sm text-gray-500">
-            You are currently on{" "}
-            {chainId && chainId in CHAIN_NAMES
-              ? CHAIN_NAMES[chainId]
-              : "Unknown"}
+            You are currently on
+            {
+              // prettier-ignore
+              // @ts-ignore
+              chainId && chainId in CHAIN_NAMES ? CHAIN_NAMES[chainId] : "Unknown"
+            }
             . Please switch to {CHAIN_NAMES[DEFAULT_CHAIN]}
           </p>
           <button
             type="button"
             className="relative inline-flex items-center justify-center mt-10 px-3 py-2 border border-transparent shadow-sm text-[20px] font-semibold rounded-2xl text-white bg-teal hover:bg-teal-hover focus:outline-none mx-2 w-[206px]"
             onClick={async () => {
-              console.log("called");
               try {
+                //@ts-ignore
                 await window?.ethereum.request({
                   method: "wallet_switchEthereumChain",
                   params: [{ chainId: "0x3" }],
