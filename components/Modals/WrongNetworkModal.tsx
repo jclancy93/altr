@@ -35,7 +35,7 @@ export function WrongNetworkModal() {
         </h3>
         <div className="mt-2">
           <p className="text-sm text-gray-500">
-            You are currently on
+            You are currently on{" "}
             {
               // prettier-ignore
               // @ts-ignore

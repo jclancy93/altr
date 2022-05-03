@@ -49,9 +49,7 @@ const Profile = () => {
     <PageLayout>
       <section className="w-full lg:w-1/5 border-r border-brand-border h-full flex flex-col items-center justify-around block border-b py-10 lg:py-0 lg:fixed lg:top-[96px] mt-[130px] lg:mt-0 lg:border-b-0 max-h-[calc(100vh-112px)]">
         <div>
-          {/* <Image src={user} alt="profile photo" /> */}
-
-          <svg viewBox="0 0 300 400" className="mx-12">
+          <svg viewBox="0 0 300 400" className="mx-12" width={200}>
             <image href={user.src} width="250" x="25" />
             <path
               id="curve"
