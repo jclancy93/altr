@@ -58,10 +58,11 @@ const Home = () => {
             <CrossmintPayButton
               collectionTitle="Test"
               collectionDescription="Test"
+              collectionPhoto=""
               clientId="6f5b82ac-65e0-4ac5-852a-ed81fdaed672"
               mintConfig={{
                 type: "erc-721",
-                price: "0.01",
+                price: "<SELECTED_PRICE_IN_ETHER>",
               }}
             />
           </div>
