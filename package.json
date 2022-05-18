@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@crossmint/client-sdk-react-ui": "^0.1.7-alpha.0",
     "@ethersproject/contracts": "^5.5.0",
     "@google/model-viewer": "^1.10.1",
     "@headlessui/react": "^1.4.3",

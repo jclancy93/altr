@@ -7,6 +7,7 @@ import {
   useNotifications,
 } from "@usedapp/core";
 import { Tag } from "degen";
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import { useERC721 } from "../hooks/useERC721";
 import { PageLayout } from "../components/PageLayout";
 import { useModals } from "../hooks/useModals";
@@ -54,6 +55,15 @@ const Home = () => {
               Your key to the altr_ ecosystem
             </span>
             <MintButton />
+            <CrossmintPayButton
+              collectionTitle="Test"
+              collectionDescription="Test"
+              clientId="6f5b82ac-65e0-4ac5-852a-ed81fdaed672"
+              mintConfig={{
+                type: "erc-721",
+                price: "0.01",
+              }}
+            />
           </div>
         </section>
         <section className="w-full lg:w-3/5 static lg:sticky top-28">
