@@ -59,11 +59,9 @@ const Home = () => {
               collectionTitle="Test"
               collectionDescription="Test"
               collectionPhoto=""
-              clientId="6f5b82ac-65e0-4ac5-852a-ed81fdaed672"
-              mintConfig={{
-                type: "erc-721",
-                price: "<SELECTED_PRICE_IN_ETHER>",
-              }}
+              clientId="a5b5307b-1d25-4913-8106-d4e61d95867d"
+              environment="staging"
+              mintConfig={{ type: "erc-721", price: "0.02" }}
             />
           </div>
         </section>
