@@ -24,7 +24,7 @@ const Home = () => {
       <div className="flex flex-col-reverse lg:flex-row justify-between mt-[96px] pt-20 px-8 sm:px-12 lg:px-16">
         <section className="w-full lg:w-2/5 lg:pr-10">
           <div className="border-0 lg:border border-brand-border px-8 py-12 rounded-[44px] lg:max-w-[440px]">
-            <span className="block text-4xl text-white">
+            <span className="block text-5xl text-white">
               <span className="font-bold italic">nect0</span>
               <span className="font-bold italic text-outline-white text-gray-900">
                 {" "}
