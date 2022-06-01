@@ -13,11 +13,14 @@ import { PageLayout } from "../components/PageLayout";
 import { useModals } from "../hooks/useModals";
 import { MintButton } from "../components/MintButton";
 import { ProductCarousel } from "../components/ProductCarousel";
+import { MINT_OPEN_TIME } from "../constants/mint";
+import Countdown from "react-countdown";
 
 const Home = () => {
   const { maxSupply, totalSupply, isSaleActive } = useERC721();
   const { account } = useEthers();
   const { showWalletModal } = useModals();
+  console.log({ date: Date.now(), MINT_OPEN_TIME });
 
   return (
     <PageLayout>
@@ -54,16 +57,30 @@ const Home = () => {
               <br />
               Your key to the altr_ ecosystem
             </span>
-            <MintButton />
-            <CrossmintPayButton
-              collectionTitle="Test"
-              collectionDescription="Test"
-              collectionPhoto=""
-              clientId="a5b5307b-1d25-4913-8106-d4e61d95867d"
-              environment="staging"
-              mintConfig={{ type: "erc-721", price: "0.02" }}
-              className="crossmint-button mt-4"
-            />
+            {Date.now() < MINT_OPEN_TIME ? (
+              <>
+                <span className="block text-xl text-gray-500 mt-8 mb-4">
+                  Releasing in..
+                </span>
+                <Countdown
+                  date={MINT_OPEN_TIME}
+                  className="text-3xl text-gray-100 mt-4 mb-4"
+                />
+              </>
+            ) : (
+              <>
+                <MintButton />
+                <CrossmintPayButton
+                  collectionTitle="Test"
+                  collectionDescription="Test"
+                  collectionPhoto=""
+                  clientId="a5b5307b-1d25-4913-8106-d4e61d95867d"
+                  environment="staging"
+                  mintConfig={{ type: "erc-721", price: "0.02" }}
+                  className="crossmint-button mt-4"
+                />
+              </>
+            )}
           </div>
         </section>
         <section className="w-full lg:w-3/5 static lg:sticky top-28">
