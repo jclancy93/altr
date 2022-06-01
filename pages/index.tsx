@@ -62,6 +62,7 @@ const Home = () => {
               clientId="a5b5307b-1d25-4913-8106-d4e61d95867d"
               environment="staging"
               mintConfig={{ type: "erc-721", price: "0.02" }}
+              className="crossmint-button mt-4"
             />
           </div>
         </section>
