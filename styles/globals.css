@@ -62,3 +62,13 @@ model-viewer {
 .crossmintParagraph-0-2-3 {
   width: 100% !important;
 }
+
+.slide {
+  display: flex;
+  justify-content: center;
+}
+
+.selected {
+  display: flex;
+  justify-content: center;
+}

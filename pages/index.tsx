@@ -16,6 +16,22 @@ import { ProductCarousel } from "../components/ProductCarousel";
 import { MINT_OPEN_TIME } from "../constants/mint";
 import Countdown from "react-countdown";
 
+const renderer = ({
+  hours,
+  minutes,
+  seconds,
+}: {
+  hours: number;
+  minutes: number;
+  seconds: number;
+}) => {
+  return (
+    <span className="text-3xl text-gray-100 ">
+      {hours}:{minutes}:{seconds}
+    </span>
+  );
+};
+
 const Home = () => {
   const { maxSupply, totalSupply, isSaleActive } = useERC721();
   const { account } = useEthers();
@@ -24,7 +40,7 @@ const Home = () => {
 
   return (
     <PageLayout>
-      <div className="flex flex-col-reverse lg:flex-row justify-between mt-[96px] pt-20 px-8 sm:px-12 lg:px-16">
+      <div className="flex flex-col-reverse lg:flex-row justify-between mt-[96px] pt-14 lg:pt-20 px-8 sm:px-12 lg:px-16">
         <section className="w-full lg:w-2/5 lg:pr-10">
           <div className="border-0 lg:border border-brand-border px-8 py-12 rounded-[44px] lg:max-w-[440px]">
             <span className="block text-5xl text-white">
@@ -48,14 +64,14 @@ const Home = () => {
               Our very first asset.
               <br />
               <br />
+              Your lens towards the future
+              <br />
+              <br />
               A soft augmented reality helmet with integrated biological defence
               and sound control.
               <br />
               <br />
-              Click &#39;Buy&#39; to obtain a digital version of your mask.
-              <br />
-              <br />
-              Your key to the altr_ ecosystem
+              This exclusive limited item will unlock access to future releases
             </span>
             {Date.now() < MINT_OPEN_TIME ? (
               <>
@@ -64,7 +80,9 @@ const Home = () => {
                 </span>
                 <Countdown
                   date={MINT_OPEN_TIME}
-                  className="text-3xl text-gray-100 mt-4 mb-4"
+                  className="mt-4 mb-4"
+                  renderer={renderer}
+                  daysInHours={true}
                 />
               </>
             ) : (
@@ -83,7 +101,7 @@ const Home = () => {
             )}
           </div>
         </section>
-        <section className="w-full lg:w-3/5 static lg:sticky top-28">
+        <section className="w-full lg:w-3/5 static lg:sticky top-28 flex items-center">
           <ProductCarousel />
         </section>
       </div>

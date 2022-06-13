@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { isAddress } from '../utils/isAddress';
-import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
 import { useEthers } from '@usedapp/core';
 

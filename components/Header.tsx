@@ -80,10 +80,14 @@ export function Header() {
                   </Link>
                 </div>
                 <Link href="">
-                  <span className="flex items-center mx-4">vision</span>
+                  <span className="flex items-center mx-4 hidden lg:block">
+                    vision
+                  </span>
                 </Link>
                 <Link href="">
-                  <span className="flex items-center mx-4">contact</span>
+                  <span className="flex items-center mx-4 hidden lg:block">
+                    contact
+                  </span>
                 </Link>
               </div>
               <div className="flex items-center">

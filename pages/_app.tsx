@@ -17,6 +17,8 @@ import { Web3ReactProvider } from "@web3-react/core";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  
   return (
     <>
       <Head>
