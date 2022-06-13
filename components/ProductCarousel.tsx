@@ -23,7 +23,7 @@ export const ProductCarousel = () => {
         showThumbs={false}
         statusFormatter={() => ""}
         dynamicHeight={false}
-        className="mt-0 lg:mt-10 flex justify-center"
+        className="flex justify-center items-center"
       >
         <div>
           <ModelComponent />

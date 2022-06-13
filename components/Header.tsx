@@ -79,16 +79,20 @@ export function Header() {
                     />
                   </Link>
                 </div>
-                <Link href="">
-                  <span className="flex items-center mx-4 hidden lg:block">
-                    vision
-                  </span>
-                </Link>
-                <Link href="">
+                <a
+                  href="https://www.altr.space/#sign-up-section"
+                  className="flex items-center mx-4 hidden lg:block justify-center"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ display: "flex" }}
+                >
+                  vision
+                </a>
+                {/* <Link href="">
                   <span className="flex items-center mx-4 hidden lg:block">
                     contact
                   </span>
-                </Link>
+                </Link> */}
               </div>
               <div className="flex items-center">
                 <div className="flex-shrink-0">
