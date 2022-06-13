@@ -1,6 +1,7 @@
 import { Contract } from "@ethersproject/contracts";
 import { useContractFunction, useEthers } from "@usedapp/core";
 import Image from "next/image";
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import { useERC721 } from "../hooks/useERC721";
 import { useModals } from "../hooks/useModals";
 import { ButtonConfirmed } from "./Button";
@@ -13,7 +14,7 @@ export const MintButton = () => {
   const { account } = useEthers();
   const { showWalletModal } = useModals();
   const { isSaleActive } = useERC721();
-  const ERC721_ADDRESS = "0x84B0D249405Ed0e1a215FF4B7F5BF79a8aB165Ea"; //ropsten
+  const ERC721_ADDRESS = "0x3e5145F8211A16056869072967F43dE61eb967DF"; //ropsten
   const ERC721Contract = new Contract(ERC721_ADDRESS, ERC721ABI);
   const { state, send: mintToken } = useContractFunction(
     // @ts-ignore
@@ -84,6 +85,16 @@ export const MintButton = () => {
           </div>
         )}
       </button>
+      <CrossmintPayButton
+        collectionTitle="nect0 mask"
+        collectionDescription="Our very first asset. Your lens towards the future. A soft augmented reality helmet with integrated biological defence
+                  and sound control. This exclusive limited item will unlock access to future releases."
+        collectionPhoto=""
+        clientId="a5b5307b-1d25-4913-8106-d4e61d95867d"
+        environment="staging"
+        mintConfig={{ type: "erc-721", price: "0.02" }}
+        className="crossmint-button mt-4"
+      />
       {state.errorMessage && (
         <span className="text-red-400 text-center block">
           {state.errorMessage}

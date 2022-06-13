@@ -6,7 +6,7 @@ import { NFT_ADDRESSES } from "../constants/addresses"
 import ERC721ABI from "../constants/abi/ERC721.json"
 import { useContract } from "./useContract"
 
-const ERC721_ADDRESS = '0x84B0D249405Ed0e1a215FF4B7F5BF79a8aB165Ea' //ropsten
+const ERC721_ADDRESS = '0x3e5145F8211A16056869072967F43dE61eb967DF' //rinkeby
 
 export const useERC721 = () => {
     const { chainId, account, library } = useEthers()

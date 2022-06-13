@@ -20,5 +20,5 @@ export const MULTICALL_ADDRESSES = {
 }
 
 export const NFT_ADDRESSES = {
-  [ChainId.Rinkeby]: '0xAB6f5Fa0e0586b8557b5692669Df16A70b1aa980'
+  [ChainId.Rinkeby]: '0x3e5145F8211A16056869072967F43dE61eb967DF'
 }

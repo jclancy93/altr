@@ -4,7 +4,7 @@ import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 export const config: Config = {
     readOnlyChainId: 3,
     readOnlyUrls: {
-      [Ropsten.chainId]:
+      [Rinkeby.chainId]:
         "https://ropsten.infura.io/v3/ff4b9e3e27404d18ae6296dcc353fd60",
     },
     notifications: {

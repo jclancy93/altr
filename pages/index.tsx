@@ -7,7 +7,6 @@ import {
   useNotifications,
 } from "@usedapp/core";
 import { Tag } from "degen";
-import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 import { useERC721 } from "../hooks/useERC721";
 import { PageLayout } from "../components/PageLayout";
 import { useModals } from "../hooks/useModals";
@@ -36,7 +35,6 @@ const Home = () => {
   const { maxSupply, totalSupply, isSaleActive } = useERC721();
   const { account } = useEthers();
   const { showWalletModal } = useModals();
-  console.log({ date: Date.now(), MINT_OPEN_TIME });
 
   return (
     <PageLayout>
@@ -88,15 +86,6 @@ const Home = () => {
             ) : (
               <>
                 <MintButton />
-                <CrossmintPayButton
-                  collectionTitle="Test"
-                  collectionDescription="Test"
-                  collectionPhoto=""
-                  clientId="a5b5307b-1d25-4913-8106-d4e61d95867d"
-                  environment="staging"
-                  mintConfig={{ type: "erc-721", price: "0.02" }}
-                  className="crossmint-button mt-4"
-                />
               </>
             )}
           </div>

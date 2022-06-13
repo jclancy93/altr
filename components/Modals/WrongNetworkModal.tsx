@@ -51,7 +51,7 @@ export function WrongNetworkModal() {
                 //@ts-ignore
                 await window?.ethereum.request({
                   method: "wallet_switchEthereumChain",
-                  params: [{ chainId: "0x3" }],
+                  params: [{ chainId: "0x4" }],
                 });
               } catch (err) {
                 console.log(err);

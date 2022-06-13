@@ -7,8 +7,6 @@ export const useSpecificNetwork = (desiredChainId: ChainId) => {
     const { chainId, account, library } = useEthers()
     const { showWrongNetworkModal, hideModal } = useModals();
 
-    console.log(desiredChainId, chainId)
-
     useEffect(() => {
         if (chainId && +chainId !== desiredChainId) {
             showWrongNetworkModal()
